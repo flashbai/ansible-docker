@@ -1,2 +1,5 @@
 ---
 # defaults file for docker
+default_conf: /etc/default/docker
+docker_service_file: /usr/lib/systemd/system/docker.service
+docker_storage: /data/docker/data
