@@ -7,7 +7,7 @@ Requires=docker.socket
 [Service]
 EnvironmentFile=-{{default_conf}}
 Type=notify
-ExecStart=/usr/bin/docker daemon -H fd:// -H unix:///var/run/docker.sock $DOCKER_OPTS
+ExecStart=/usr/bin/docker daemon --tls=false -H tcp://127.0.0.1:2376 -H tcp://{{inner_ip}}:2376 -H fd:// -H unix:///var/run/docker.sock $DOCKER_OPTS
 MountFlags=slave
 LimitNOFILE=1048576
 LimitNPROC=1048576

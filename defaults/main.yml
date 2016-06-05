@@ -3,3 +3,4 @@
 default_conf: /etc/default/docker
 docker_service_file: /usr/lib/systemd/system/docker.service
 docker_storage: /data/docker/data
+docker_port: 2376
