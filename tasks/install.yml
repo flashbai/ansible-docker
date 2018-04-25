@@ -2,7 +2,7 @@
 - name: upgrade all packages
   yum: name=* state=latest
   register: installed
-  until: installed|success
+  until: installed is success
   retries: 5
   delay: 30
 
@@ -24,8 +24,11 @@
 - name: add DOCKER_OPTS for storage
   template: src=templates/docker.j2 dest={{ default_conf }}
 
-  - name: add DOCKER_OPTS for storage
-    template: src=templates/daemon.json.j2 dest=/etc/docker/daemon.json
+# - name: Create docker ect directory directory
+#   file: path=/etc/docker state=directory
+#
+# - name: add registry
+#   template: src=templates/daemon.json.j2 dest=/etc/docker/daemon.json
 
 - name: add docker service file
   template: src=templates/docker.service.j2 dest={{ docker_service_file }}
